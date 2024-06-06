@@ -39,11 +39,3 @@ export function listImages(images, gallery) {
 export function showError(message) {
   iziToast.error({ message });
 }
-
-export function showLoader(loader) {
-  loader.style.display = 'block';
-}
-
-export function hideLoader(loader) {
-  loader.style.display = 'none';
-}

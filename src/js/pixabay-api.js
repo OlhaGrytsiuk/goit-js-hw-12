@@ -1,20 +1,20 @@
 'use strict';
+import axios from 'axios';
 
-export function searchImages(query) {
-  const BASE_URL = 'https://pixabay.com/api/';
-  const params = new URLSearchParams({
-    key: '44240844-fac6cf8e273222cb69c263295',
-    q: query,
-    image_type: 'photo',
-    orientation: 'horizontal',
-    safesearch: 'true',
-  });
-  const url = `${BASE_URL}?${params}`;
-
-  return fetch(url).then(res => {
-    if (!res.ok) {
-      throw new Error('Network response was not ok');
-    }
-    return res.json();
-  });
+export async function searchImages(query, page = 1) {
+  return await axios
+    .get('https://pixabay.com/api/', {
+      params: {
+        key: '44240844-fac6cf8e273222cb69c263295',
+        q: query,
+        image_type: 'photo',
+        orientation: 'horizontal',
+        safesearch: 'true',
+        page,
+        per_page: '15',
+      },
+    })
+    .then(res => {
+      return res.data;
+    });
 }

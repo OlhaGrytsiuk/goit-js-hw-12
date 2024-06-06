@@ -93,6 +93,14 @@ button {
   height: 40px;
 }
 
+.load-more {
+  width: 125px;
+  height: 40px;
+  display: block;
+  margin: auto;
+  margin-top: 32px;
+}
+
 .gallery {
   display: flex;
   flex-wrap: wrap;
