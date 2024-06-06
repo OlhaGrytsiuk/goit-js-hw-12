@@ -68,6 +68,7 @@ async function onBtnClick(query) {
       per_page >= response.totalHits
     ) {
       learnMoreBtn.style.display = 'none';
+      showError("We're sorry, but you've reached the end of search results.");
     }
   } catch (error) {
     loader.style.display = 'none';
