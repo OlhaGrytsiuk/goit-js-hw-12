@@ -1,17 +1,16 @@
 'use strict';
 
-import iziToast from 'izitoast';
-import 'izitoast/dist/css/iziToast.min.css';
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 let lightbox;
+const gallery = document.querySelector('.gallery');
 
-export function listImages(images, gallery) {
+export function listImages(images) {
   const markup = images
     .map(image => {
       return `
-      <li>
+      <li class = "gallery-item">
         <a href="${image.largeImageURL}">
           <img src="${image.webformatURL}" alt="${image.tags}">
         </a>
@@ -29,13 +28,12 @@ export function listImages(images, gallery) {
 
   gallery.insertAdjacentHTML('beforeend', markup);
 
-  if (lightbox) {
-    lightbox.refresh();
+  if (!lightbox) {
+    lightbox = new SimpleLightbox('.gallery a', {
+      captionsData: 'alt',
+      captionDelay: 250,
+    });
   } else {
-    lightbox = new SimpleLightbox('.gallery a', {});
+    lightbox.refresh();
   }
-}
-
-export function showError(message) {
-  iziToast.error({ message });
 }

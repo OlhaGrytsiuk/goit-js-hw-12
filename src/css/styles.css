@@ -171,3 +171,7 @@ button {
     box-shadow: 10px 0 white, 20px 0 white;
   }
 }
+
+.hidden {
+  display: none;
+}
